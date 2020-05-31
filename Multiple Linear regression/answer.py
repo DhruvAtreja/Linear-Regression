@@ -23,3 +23,9 @@ regressor.fit(X, y)
 
 y_pred = regressor.predict(datasettest)
 
+X = np.append(arr = np.ones((1600, 1)).astype(int), values = X, axis = 1)
+X_opt = np.array(X[:, [0, 1, 2, 3, 4, 5]], dtype=float)
+import statsmodels.api as sm
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+#All P values are 0
